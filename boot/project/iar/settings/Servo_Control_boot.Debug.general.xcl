@@ -1,0 +1,15 @@
+D:\Software\Embedded\IAR\Install\arm\bin\armproc.dll
+
+ D:\Software\Embedded\IAR\Install\arm\bin\armjlink.dll
+
+ E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\boot\project\iar\Debug\Exe\Servo_Control_boot.out
+
+ --plugin=D:\Software\Embedded\IAR\Install\arm\bin\armLibSupportUniversal.dll
+
+ --device_macro=D:\Software\Embedded\IAR\Install\arm/config/debugger/GD/GD32F10x.dmac
+
+ --flash_loader=D:\Software\Embedded\IAR\Install\arm/config/flashloader/GD/FlashGD32F10xxC.board
+
+ 
+
+

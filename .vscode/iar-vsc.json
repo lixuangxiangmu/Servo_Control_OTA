@@ -1,0 +1,19 @@
+{
+  "workspace": {
+    "path": "${workspaceFolder}\\iar_workspace\\Servo_Control.eww"
+  },
+  "workspaces": {
+    "${workspaceFolder}\\iar_workspace\\Servo_Control.eww": {
+      "configs": {
+        "${workspaceFolder}\\app\\project\\iar\\Servo_Control.ewp": "Debug",
+        "${workspaceFolder}\\boot\\project\\iar\\Servo_Control_boot.ewp": "Debug"
+      },
+      "selected": {
+        "path": "${workspaceFolder}\\app\\project\\iar\\Servo_Control.ewp"
+      }
+    }
+  },
+  "workbench": {
+    "path": "D:\\Software\\Embedded\\IAR\\Install"
+  }
+}
