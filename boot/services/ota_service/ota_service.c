@@ -445,7 +445,7 @@ static void ota_service_handle_start(const ota_frame_t *req, ota_eeprom_info_t *
     if (req->payload_len != OTA_START_REQ_LEN)
     {
         ota_service_build_start_payload(s_ota_payload_buf, (uint32_t)OTA_ERR_PAYLOAD_LEN, 0U, 0U, 0U);
-        (void)ota_service_send_response(req, s_ota_payload_buf, OTA_START_RSP_LEN);
+        ota_service_send_response(req, s_ota_payload_buf, OTA_START_RSP_LEN);
         return;
     }
 
