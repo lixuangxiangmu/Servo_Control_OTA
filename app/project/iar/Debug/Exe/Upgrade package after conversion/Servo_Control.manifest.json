@@ -1,0 +1,9 @@
+{
+  "product_id": 4097,
+  "hw_id": 1,
+  "fw_version": "2.0.1",
+  "image_size": 131072,
+  "image_crc32": "0x04200620",
+  "app_base": "0x08008000",
+  "app_max_size": 131072
+}

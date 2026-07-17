@@ -188,32 +188,23 @@ static uint8_t boot_need_ota_mode(ota_eeprom_info_t *ota_info,
     /* A valid image must pass vector-table and full-image CRC checks. */
     if (boot_app_is_valid() == 0U)
     {
-        boot_record_app_failure(ota_info,
-                                ota_info_valid,
-                                (uint32_t)OTA_ERR_IMAGE_INVALID);
+        boot_record_app_failure(ota_info, ota_info_valid, (uint32_t)OTA_ERR_IMAGE_INVALID);
         return 1U;
     }
 
-    if ((ota_info_valid != 0U) && (ota_info->app_valid != 0U) &&
-        (ota_info->image_size > 0U))
+    if ((ota_info_valid != 0U) && (ota_info->app_valid != 0U) && (ota_info->image_size > 0U))
     {
         uint32_t image_crc32;
 
-        if ((ota_info->image_size > CONFIG_APP_SIZE) ||
-            (ota_flash_calculate_crc32(ota_info->image_size,
-                                       &image_crc32) != OTA_FLASH_OK))
+        if ((ota_info->image_size > CONFIG_APP_SIZE) || (ota_flash_calculate_crc32(ota_info->image_size, &image_crc32) != OTA_FLASH_OK))
         {
-            boot_record_app_failure(ota_info,
-                                    ota_info_valid,
-                                    (uint32_t)OTA_ERR_IMAGE_INVALID);
+            boot_record_app_failure(ota_info, ota_info_valid, (uint32_t)OTA_ERR_IMAGE_INVALID);
             return 1U;
         }
 
         if (image_crc32 != ota_info->image_crc32)
         {
-            boot_record_app_failure(ota_info,
-                                    ota_info_valid,
-                                    (uint32_t)OTA_ERR_IMAGE_CRC);
+            boot_record_app_failure(ota_info, ota_info_valid, (uint32_t)OTA_ERR_IMAGE_CRC);
             return 1U;
         }
     }
@@ -239,11 +230,14 @@ void boot_main(void)
     }
 
     /* 从 EEPROM 加载 OTA 状态，判断是否需要进入升级模式 */
-    ret = ota_eeprom_load(&ota_info);
-    if (RET_IS_OK(ret))
-    {
-        ota_info_valid = 1U;
-    }
+     ret = ota_eeprom_load(&ota_info);
+     if (RET_IS_OK(ret))
+     {
+         ota_info_valid = 1U;
+     }
+//    memset(&ota_info, 0, sizeof(ota_eeprom_info_t));    //Test
+//    ota_info.ota_state = OTA_STATE_REQUEST;
+//    ota_info_valid = 1;
 
     if (boot_need_ota_mode(&ota_info, ota_info_valid))
     {

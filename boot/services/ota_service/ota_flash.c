@@ -218,8 +218,7 @@ ota_flash_result_t ota_flash_calculate_crc32(uint32_t image_size, uint32_t *crc3
     uint32_t offset = 0U;
     uint32_t crc;
 
-    if ((crc32 == NULL) || (image_size == 0U) ||
-        (image_size > CONFIG_APP_SIZE))
+    if ((crc32 == NULL) || (image_size == 0U) || (image_size > CONFIG_APP_SIZE))
     {
         return OTA_FLASH_INVALID_PARAM;
     }
