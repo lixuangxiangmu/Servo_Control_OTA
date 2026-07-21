@@ -283,8 +283,7 @@ static uint32_t ota_service_prepare_enter(const ota_frame_t *req, ota_eeprom_inf
     }
 
     /* --- Version check: target must be strictly newer than current --- */
-    if ((target_fw_version == 0U) ||
-        (target_fw_version <= APP_OTA_VERSION_NUM))
+    if ((target_fw_version == 0U) || (target_fw_version <= APP_OTA_VERSION_NUM))
     {
         return (uint32_t)OTA_ERR_VERSION_TOO_OLD;
     }
@@ -450,37 +449,5 @@ int ota_service_process_frame(const uint8_t *buf, uint32_t len)
             /* Unknown command — inform the host with a status response */
             return ota_service_send_status(&req, (uint32_t)OTA_ERR_UNKNOWN_CMD);
         }
-    }
-}
-
-/**
- * @see ota_service.h for the full contract.
- *
- * This is a fire-and-forget entry point: if the EEPROM save succeeds, the
- * MCU resets; if it fails, the function returns silently and the application
- * continues running. The 200 ms pre-reset delay gives the EEPROM write
- * operation time to complete and any pending UART TX to drain.
- */
-void app_ota_enter(void)
-{
-    ota_eeprom_info_t info;
-
-    /* Load or initialize the OTA persistent state */
-    if (RET_IS_ERR(ota_eeprom_load(&info)))
-    {
-        ota_eeprom_init_default(&info);
-    }
-
-    /* Set up a fresh OTA request session */
-    info.ota_state = (uint32_t)OTA_STATE_REQUEST;
-    info.received_offset = 0U;
-    info.fail_reason = (uint32_t)OTA_OK;
-    info.retry_count = 0U;
-
-    /* Persist and reboot — only reset if the save succeeded */
-    if (RET_IS_OK(ota_eeprom_save(&info)))
-    {
-        vTaskDelay(pdMS_TO_TICKS(200U));
-        NVIC_SystemReset();
     }
 }

@@ -39,12 +39,25 @@
 #define OTA_END_REBOOT_DELAY_MS       500U
 #define OTA_MAX_CHUNK_SIZE            (OTA_MAX_PAYLOAD - OTA_DATA_REQ_HEADER_LEN)
 
+/* Temporary diagnostics: set to 0U after the CRC issue is resolved. */
+#define OTA_CRC_DEBUG_EVENT_ENABLED   0U
+#define OTA_CRC_DEBUG_EVENT_CMD       ((uint16_t)(CMD_VENDOR_BEGIN + 1U))
+#define OTA_CRC_DEBUG_EVENT_LEN       20U
+#define OTA_CRC_DEBUG_MAGIC           0x31474244UL /* "DBG1", little-endian */
+#define OTA_CRC_DEBUG_TX_RETRY_COUNT  20U
+
 static uint8_t s_ota_rx_buf[DEV_UART_FRAME_MAX_LEN];
 static uint8_t s_ota_tx_buf[DEV_UART_FRAME_MAX_LEN];
 static uint8_t s_ota_payload_buf[OTA_GET_INFO_RSP_LEN];
 static uint16_t s_ota_tx_seq;
 static uint32_t s_ota_chunk_size;
 static uint8_t s_ota_transfer_active;
+
+typedef struct
+{
+    uint32_t session_id;
+    uint32_t image_size;
+} ota_crc_debug_context_t;
 
 /**
  * @brief Load persistent OTA state and determine whether the application is valid.
@@ -244,6 +257,72 @@ static int ota_service_send_response(const ota_frame_t *req, const uint8_t *payl
     }
 
     return tx_len;
+}
+
+/**
+ * @brief Send one temporary CRC-progress EVENT frame to the OTA host.
+ *
+ * Payload layout (all uint32 little-endian):
+ *   0: 0x31474244 ("DBG1")
+ *   4: processed image bytes
+ *   8: finalized CRC32 of bytes [0, processed)
+ *  12: total image bytes
+ *  16: APP Flash base address
+ */
+static void ota_service_send_crc_debug_event(uint32_t processed_bytes,
+                                             uint32_t crc32_so_far,
+                                             void *user_ctx)
+{
+#if (OTA_CRC_DEBUG_EVENT_ENABLED != 0U)
+    const ota_crc_debug_context_t *ctx = (const ota_crc_debug_context_t *)user_ctx;
+    ota_frame_t event;
+    uint8_t payload[OTA_CRC_DEBUG_EVENT_LEN];
+    int frame_len;
+    int tx_ret;
+    uint8_t retry;
+
+    if (ctx == NULL)
+    {
+        return;
+    }
+
+    utils_put_u32_le(&payload[0], OTA_CRC_DEBUG_MAGIC);
+    utils_put_u32_le(&payload[4], processed_bytes);
+    utils_put_u32_le(&payload[8], crc32_so_far);
+    utils_put_u32_le(&payload[12], ctx->image_size);
+    utils_put_u32_le(&payload[16], CONFIG_APP_BASE_ADDR);
+
+    event.type = (uint8_t)FRAME_TYPE_EVENT;
+    event.flags = 0U;
+    event.seq = s_ota_tx_seq++;
+    event.ack_seq = 0U;
+    event.cmd = OTA_CRC_DEBUG_EVENT_CMD;
+    event.payload_len = sizeof(payload);
+    event.session_id = ctx->session_id;
+    event.payload = payload;
+
+    frame_len = ota_protocol_build_frame(&event, s_ota_tx_buf, sizeof(s_ota_tx_buf));
+    if (frame_len > 0)
+    {
+        /* Wait briefly for the preceding UART-DMA transfer instead of dropping a page event. */
+        for (retry = 0U; retry < OTA_CRC_DEBUG_TX_RETRY_COUNT; retry++)
+        {
+            tx_ret = dev_uart_write(BOARD_UART3_NAME, s_ota_tx_buf, (uint32_t)frame_len);
+            if (tx_ret > 0)
+            {
+                /* A 42-byte event takes < 4 ms at 115200 baud; retain margin for DMA completion. */
+                delay_ms(10U);
+                break;
+            }
+
+            delay_ms(1U);
+        }
+    }
+#else
+    (void)processed_bytes;
+    (void)crc32_so_far;
+    (void)user_ctx;
+#endif
 }
 
 /**
@@ -651,6 +730,7 @@ static void ota_service_handle_end(const ota_frame_t *req, ota_eeprom_info_t *in
     uint8_t failure_is_terminal = 0U;
     ota_flash_result_t flash_result;
     int tx_ret;
+    ota_crc_debug_context_t crc_debug_context;
 
     if (req->payload_len != OTA_END_REQ_LEN)
     {
@@ -695,7 +775,9 @@ static void ota_service_handle_end(const ota_frame_t *req, ota_eeprom_info_t *in
 
     if (status == (uint32_t)OTA_OK)
     {
-        flash_result = ota_flash_calculate_crc32(info->image_size, &image_crc32_calc);
+        crc_debug_context.session_id = req->session_id;
+        crc_debug_context.image_size = info->image_size;
+        flash_result = ota_flash_calculate_crc32_with_progress(info->image_size, &image_crc32_calc, ota_service_send_crc_debug_event, &crc_debug_context);
         if (flash_result != OTA_FLASH_OK)
         {
             status = ota_service_flash_result_to_status(flash_result);

@@ -64,23 +64,4 @@ uint8_t ota_service_is_protocol_frame(const uint8_t *buf, uint32_t len);
  */
 int ota_service_process_frame(const uint8_t *buf, uint32_t len);
 
-/**
- * Legacy entry point for entering the OTA bootloader from application code.
- *
- * This function performs a local (non-network-triggered) bootloader entry:
- * it initializes the OTA session state in EEPROM, marks the state as
- * OTA_STATE_REQUEST, and issues an NVIC system reset. The Boot image will
- * detect the pending OTA state on startup and transition to the OTA transfer
- * phase.
- *
- * The function has no effect if the EEPROM save operation fails — in that
- * case the reset is skipped and the application continues running.
- *
- * @note This is retained for backwards compatibility with existing callers
- *       (e.g., a debug-menu command or a long-press gesture). New code should
- *       prefer the CMD_ENTER_OTA protocol path which includes full metadata
- *       validation before committing to the reset.
- */
-void app_ota_enter(void);
-
 #endif /* OTA_SERVICE_H */

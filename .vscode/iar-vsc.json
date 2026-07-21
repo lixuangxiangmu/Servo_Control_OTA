@@ -9,7 +9,7 @@
         "${workspaceFolder}\\boot\\project\\iar\\Servo_Control_boot.ewp": "Debug"
       },
       "selected": {
-        "path": "${workspaceFolder}\\app\\project\\iar\\Servo_Control.ewp"
+        "path": "${workspaceFolder}\\boot\\project\\iar\\Servo_Control_boot.ewp"
       }
     }
   },

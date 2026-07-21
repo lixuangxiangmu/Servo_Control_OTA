@@ -253,8 +253,8 @@ int ota_protocol_build_frame(const ota_frame_t *frame, uint8_t *out, uint32_t ou
     out[OTA_OFFSET_SOF0] = OTA_SOF0;          /* Start-of-Frame byte 0: 0x55 */
     out[OTA_OFFSET_SOF1] = OTA_SOF1;          /* Start-of-Frame byte 1: 0xAA */
     out[OTA_OFFSET_VER] = OTA_PROTO_VER;      /* Protocol version */
-    out[OTA_OFFSET_TYPE] = frame->type;              /* Frame type */
-    out[OTA_OFFSET_FLAGS] = frame->flags;            /* Capability flags */
+    out[OTA_OFFSET_TYPE] = frame->type;       /* Frame type */
+    out[OTA_OFFSET_FLAGS] = frame->flags;     /* Capability flags */
     out[OTA_OFFSET_HLEN] = OTA_HEADER_LEN;    /* Fixed header length */
 
     /* ---- Write multi-byte header fields (little-endian) ---- */

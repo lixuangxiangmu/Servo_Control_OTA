@@ -8,7 +8,6 @@
 #include "app_mem_map.h"
 #include "board_config.h"
 #include "dev_flash.h"
-#include "utils_lib.h"
 
 #include <stddef.h>
 #include <string.h>
@@ -20,6 +19,39 @@
 #define OTA_FLASH_PADDING_SIZE          2U
 
 static uint8_t s_ota_flash_verify_buf[OTA_FLASH_VERIFY_BUFFER_SIZE];
+
+/**
+ * @brief Update a standard reflected CRC-32/ISO-HDLC context.
+ *
+ * This local bitwise implementation deliberately does not use the shared
+ * lookup-table helper. OTA trace data showed that the target's table-based
+ * path produced a different value despite the transferred image and Flash
+ * readback being correct. Parameters match the host protocol exactly:
+ * poly=0xEDB88320, init=0xFFFFFFFF, refin/refout=true, xorout=0xFFFFFFFF.
+ */
+static uint32_t ota_flash_crc32_update(uint32_t crc, const uint8_t *buf, uint32_t len)
+{
+    uint8_t bit;
+
+    while (len--)
+    {
+        crc ^= (uint32_t)*buf++;
+
+        for (bit = 0U; bit < 8U; bit++)
+        {
+            if ((crc & 1U) != 0U)
+            {
+                crc = (crc >> 1) ^ 0xEDB88320UL;
+            }
+            else
+            {
+                crc >>= 1;
+            }
+        }
+    }
+
+    return crc;
+}
 
 /**
  * @brief Check whether a relative OTA write/read range fits in the app slot.
@@ -215,15 +247,24 @@ ota_flash_result_t ota_flash_write_chunk(uint32_t offset, const uint8_t *data, u
  */
 ota_flash_result_t ota_flash_calculate_crc32(uint32_t image_size, uint32_t *crc32)
 {
+    return ota_flash_calculate_crc32_with_progress(image_size, crc32, NULL, NULL);
+}
+
+ota_flash_result_t ota_flash_calculate_crc32_with_progress(uint32_t image_size,
+                                                            uint32_t *crc32,
+                                                            ota_flash_crc_progress_cb_t progress_cb,
+                                                            void *user_ctx)
+{
     uint32_t offset = 0U;
     uint32_t crc;
+    uint32_t next_progress_offset = FLASH_PAGE_SIZE;
 
     if ((crc32 == NULL) || (image_size == 0U) || (image_size > CONFIG_APP_SIZE))
     {
         return OTA_FLASH_INVALID_PARAM;
     }
 
-    crc = utils_crc32_init();
+    crc = 0xFFFFFFFFUL;
     while (offset < image_size)
     {
         uint32_t read_len = image_size - offset;
@@ -241,10 +282,22 @@ ota_flash_result_t ota_flash_calculate_crc32(uint32_t image_size, uint32_t *crc3
             return OTA_FLASH_READBACK_FAILED;
         }
 
-        crc = utils_crc32_update(crc, s_ota_flash_verify_buf, read_len);
+        crc = ota_flash_crc32_update(crc, s_ota_flash_verify_buf, read_len);
         offset += read_len;
+
+        /* Report a finalized prefix CRC after each 2 KiB Flash page. */
+        if ((progress_cb != NULL) &&
+            ((offset >= next_progress_offset) || (offset == image_size)))
+        {
+            progress_cb(offset, crc ^ 0xFFFFFFFFUL, user_ctx);
+
+            while (next_progress_offset <= offset)
+            {
+                next_progress_offset += FLASH_PAGE_SIZE;
+            }
+        }
     }
 
-    *crc32 = utils_crc32_finalize(crc);
+    *crc32 = crc ^ 0xFFFFFFFFUL;
     return OTA_FLASH_OK;
 }

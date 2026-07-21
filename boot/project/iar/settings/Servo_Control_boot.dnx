@@ -51,7 +51,7 @@
         <MemConfigValue>D:\Software\Embedded\IAR\Install\arm\config\debugger\GD\GD32F103xC.ddf</MemConfigValue>
     </PlDriver>
     <DebugChecksum>
-        <Checksum>1099168113</Checksum>
+        <Checksum>897790768</Checksum>
     </DebugChecksum>
     <Disassembly>
         <MixedMode>1</MixedMode>
@@ -181,8 +181,7 @@
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\services\ota_service\ota_service.c}.813.13" 0 0 1 "" 0 "" 0</Bp0>
-        <Bp1>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\services\ota_service\ota_flash.c}.249.5" 0 0 1 "" 0 "" 0</Bp1>
-        <Count>2</Count>
+        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\..\..\services\ota_service\ota_flash.c}.249.5" 0 0 1 "" 0 "" 0</Bp0>
+        <Count>1</Count>
     </Breakpoints2>
 </settings>

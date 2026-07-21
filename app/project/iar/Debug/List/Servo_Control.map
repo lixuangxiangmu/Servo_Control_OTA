@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.70.1.475/W64 for ARM                  17/Jul/2026  14:42:56
+# IAR ELF Linker V9.70.1.475/W64 for ARM                  20/Jul/2026  22:27:25
 # Copyright 2007-2025 IAR Systems AB.
 #
 #    Output file  =
@@ -138,9 +138,9 @@ initialize by copy {  rw };
 
   Section            Kind         Address  Alignment    Size  Object
   -------            ----         -------  ---------    ----  ------
-"A1":                                                 0x53c0
-  .boot              const     0x800'0000          4  0x53c0  Servo_Control_boot.bin [1]
-                             - 0x800'53c0             0x53c0
+"A1":                                                 0x5514
+  .boot              const     0x800'0000          4  0x5514  Servo_Control_boot.bin [1]
+                             - 0x800'5514             0x5514
 
 "A0":                                                  0x130
   .intvec            ro code   0x800'8000          4   0x130  startup_gd32f10x_hd.o [10]
@@ -583,9 +583,9 @@ command line/config:
     Total:                                  2
 
 E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\..\..\..\boot\project\iar\Debug\Exe: [1]
-    Servo_Control_boot.bin             21'440
+    Servo_Control_boot.bin             21'780
     --------------------------------------------------
-    Total:                             21'440
+    Total:                             21'780
 
 E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Application_4454359601498626787.dir: [2]
     app_config.o                 140      556
@@ -785,7 +785,7 @@ shb_l.a: [26]
     Gaps                          46        4
     Linker created                         36    1'024
 ------------------------------------------------------
-    Grand Total:              52'444   25'630   38'750
+    Grand Total:              52'444   25'970   38'750
 
 
 *******************************************************************************
@@ -794,7 +794,7 @@ shb_l.a: [26]
 
 Entry                       Address    Size  Type      Object
 -----                       -------    ----  ----      ------
-.boot                    0x800'0000  0x53c0  Data  Gb  Servo_Control_boot.bin [1]
+.boot                    0x800'0000  0x5514  Data  Gb  Servo_Control_boot.bin [1]
 .iar.init_table$$Base    0x801'55b8           --   Gb  - Linker created -
 .iar.init_table$$Limit   0x801'55dc           --   Gb  - Linker created -
 ?main                    0x801'5569          Code  Gb  cmain.o [25]
@@ -1848,7 +1848,7 @@ xYieldPendings          0x2000'9308     0x4  Data  Lc  tasks.o [7]
 [26] = shb_l.a
 
   52'444 bytes of readonly  code memory
-  25'630 bytes of readonly  data memory
+  25'970 bytes of readonly  data memory
   38'750 bytes of readwrite data memory
 
 Errors: none

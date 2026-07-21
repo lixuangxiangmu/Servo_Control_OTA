@@ -24,6 +24,17 @@ typedef enum
     OTA_FLASH_READBACK_FAILED, /**< Flash read or read-back comparison failed. */
 } ota_flash_result_t;
 
+/**
+ * @brief Callback invoked while a full-image CRC32 scan is in progress.
+ *
+ * @param processed_bytes Number of image bytes included in the running CRC.
+ * @param crc32_so_far    Finalized CRC32 of bytes [0, processed_bytes).
+ * @param user_ctx        Opaque caller context.
+ */
+typedef void (*ota_flash_crc_progress_cb_t)(uint32_t processed_bytes,
+                                            uint32_t crc32_so_far,
+                                            void *user_ctx);
+
 /*****************************************************************************
  * @brief Write one OTA data chunk into the application Flash area.
  *
@@ -52,5 +63,16 @@ ota_flash_result_t ota_flash_write_chunk(uint32_t offset, const uint8_t *data, u
  * @return OTA_FLASH_OK on success, otherwise an ota_flash_result_t error code.
  *****************************************************************************/
 ota_flash_result_t ota_flash_calculate_crc32(uint32_t image_size, uint32_t *crc32);
+
+/*****************************************************************************
+ * @brief Calculate CRC32 and optionally report progress at Flash page boundaries.
+ *
+ * The callback is intended for temporary OTA diagnostics. Passing NULL keeps
+ * the production behaviour identical to ota_flash_calculate_crc32().
+ *****************************************************************************/
+ota_flash_result_t ota_flash_calculate_crc32_with_progress(uint32_t image_size,
+                                                            uint32_t *crc32,
+                                                            ota_flash_crc_progress_cb_t progress_cb,
+                                                            void *user_ctx);
 
 #endif /* OTA_FLASH_H */
