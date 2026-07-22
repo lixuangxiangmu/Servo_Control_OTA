@@ -54,8 +54,8 @@
         <CStepIntDis>_ 0</CStepIntDis>
     </JLinkDriver>
     <ArmDriver>
-        <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
         <EnableCache>0</EnableCache>
+        <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
     </ArmDriver>
     <DebugChecksum>
         <Checksum>2340982322</Checksum>

@@ -2421,9 +2421,6 @@
             <name>$PROJ_DIR$\..\..\config\FreeRTOSConfig.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\..\config\memory_config.h</name>
-        </file>
-        <file>
             <name>$PROJ_DIR$\..\..\config\project_config.h</name>
         </file>
         <file>

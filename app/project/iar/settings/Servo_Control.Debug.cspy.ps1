@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "D:\Software\Embedded\IAR\Install\common\bin\cspybat" -f "E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\settings\Servo_Control.Debug.general.xcl" --backend -f "E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\settings\Servo_Control.Debug.driver.xcl" 
+& "D:\Software\Embedded\IAR\Install\common\bin\cspybat" -f "E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\settings\Servo_Control.Debug.general.xcl" --backend -f "E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\settings\Servo_Control.Debug.driver.xcl" 
 }
 else
 {
-& "D:\Software\Embedded\IAR\Install\common\bin\cspybat" -f "E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\settings\Servo_Control.Debug.general.xcl" --debug_file=$debugfile --backend -f "E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\settings\Servo_Control.Debug.driver.xcl" 
+& "D:\Software\Embedded\IAR\Install\common\bin\cspybat" -f "E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\settings\Servo_Control.Debug.general.xcl" --debug_file=$debugfile --backend -f "E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\settings\Servo_Control.Debug.driver.xcl" 
 }

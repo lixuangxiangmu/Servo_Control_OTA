@@ -1061,7 +1061,7 @@ static void app_locked_rotor_task(void *arg)
     uint8_t over_count = 0U;    /* Consecutive over-threshold counter. */
     uint32_t locked_raw;        /* Raw ADC sample value. */
     app_servo_runtime_state_t runtime;
-    app_servo_params_t params;
+//    app_servo_params_t params;
 
     (void)arg;
 

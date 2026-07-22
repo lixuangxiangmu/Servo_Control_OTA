@@ -24,9 +24,6 @@
 #include <stdint.h>
 
 #define BOARD_ARRAY_SIZE(array) ((uint32_t)(sizeof(array) / sizeof((array)[0])))
-
-#if defined(CONFIG_CHIP_GD32)
-
 /* =====================================================================
  * UART3 资源配置
  * TX: PC10, RX: PC11, 115200 8N1
@@ -146,7 +143,43 @@ static void board_systick_init(void)
     SysTick->CTRL = SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_TICKINT_Msk | SysTick_CTRL_ENABLE_Msk;
 }
 
-#endif /* CONFIG_CHIP_GD32 */
+/*****************************************************************************
+ * @brief: 复位并关闭 Bootloader 已使用的 UART、I2C 及 DMA 硬件资源
+ *
+ * UART3 的 DMA 请求必须先关闭，再复位 DMA 通道和 UART，防止在 App 完成
+ * 自身初始化前继续访问 Bootloader 的 DMA 缓冲区。I2C0 在复位前先请求 STOP，
+ * 尽可能释放 EEPROM 总线。
+ *****************************************************************************/
+void board_deinit_for_app_jump(void)
+{
+    /* UART3: stop peripheral requests before resetting its DMA channels. */
+    usart_interrupt_disable(UART3, USART_INT_IDLE);
+    usart_dma_receive_config(UART3, USART_RECEIVE_DMA_DISABLE);
+    usart_dma_transmit_config(UART3, USART_TRANSMIT_DMA_DISABLE);
+    usart_disable(UART3);
+    dma_deinit(DMA1, DMA_CH2);
+    dma_deinit(DMA1, DMA_CH4);
+    usart_deinit(UART3);
+
+    /* I2C0 uses blocking transfers, but send STOP in case an error path left
+       the peripheral in a bus-active state before its peripheral reset. */
+    i2c_stop_on_bus(I2C0);
+    i2c_disable(I2C0);
+    i2c_deinit(I2C0);
+
+    /* The flash driver locks FMC after every operation; lock once more so a
+       future driver change cannot leave program/erase access enabled. */
+    fmc_lock();
+
+    /* No Bootloader code executes after this point, so gate its clocks. GPIO
+       mode registers retain their values; the App BSP reconfigures all pins it
+       owns before use. */
+    rcu_periph_clock_disable(RCU_UART3);
+    rcu_periph_clock_disable(RCU_I2C0);
+    rcu_periph_clock_disable(RCU_DMA1);
+    rcu_periph_clock_disable(RCU_GPIOB);
+    rcu_periph_clock_disable(RCU_GPIOC);
+}
 
 /* =====================================================================
  * 公共接口
@@ -157,7 +190,6 @@ static void board_systick_init(void)
  *****************************************************************************/
 void board_init(void)
 {
-#if defined(CONFIG_CHIP_GD32)
     /* NVIC 优先级分组: 4 位抢占优先级, 0 位子优先级。 */
     nvic_priority_group_set(NVIC_PRIGROUP_PRE4_SUB0);
 
@@ -168,5 +200,4 @@ void board_init(void)
     board_flash_register();
     board_uart_register();
     board_i2c_register();
-#endif
 }

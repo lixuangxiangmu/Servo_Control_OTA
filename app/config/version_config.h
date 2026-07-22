@@ -1,11 +1,11 @@
 #ifndef VERSION_CONFIG_H
 #define VERSION_CONFIG_H
 
-#define CONFIG_APP_VERSION_MAJOR       2
+#define CONFIG_APP_VERSION_MAJOR       1
 #define CONFIG_APP_VERSION_MINOR       0
 #define CONFIG_APP_VERSION_PATCH       0
 
-#define CONFIG_VERSION_STRING          "2.0.0"
+#define CONFIG_VERSION_STRING          "1.0.0"
 
 #define CONFIG_BOOT_VERSION_MAJOR      1
 #define CONFIG_BOOT_VERSION_MINOR      0

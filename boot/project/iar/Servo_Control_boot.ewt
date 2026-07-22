@@ -3453,6 +3453,9 @@
     </group>
     <group>
         <name>Config</name>
+        <file>
+            <name>$PROJ_DIR$\..\..\config\project_config.h</name>
+        </file>
     </group>
     <group>
         <name>Device</name>
@@ -3536,6 +3539,9 @@
         <name>Services</name>
         <group>
             <name>ota_servoces</name>
+            <file>
+                <name>$PROJ_DIR$\..\..\services\ota_service\ota_flash.c</name>
+            </file>
             <file>
                 <name>$PROJ_DIR$\..\..\services\ota_service\ota_image.c</name>
             </file>

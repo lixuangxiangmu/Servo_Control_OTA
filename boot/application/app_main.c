@@ -1,3 +1,8 @@
+/*****************************************************************************
+ * @file    app_main.c
+ * @brief   Bootloader application validation, preparation, and entry point
+ *****************************************************************************/
+
 #include "app_main.h"
 
 #include "board.h"
@@ -17,13 +22,19 @@
 #include <stddef.h>
 #include <string.h>
 
+/** Mask applied to the initial stack pointer — must be 8-byte aligned per ARM AAPCS. */
 #define BOOT_APP_STACK_ALIGN_MASK        0x7UL
+/** Mask to test the Thumb-mode bit (bit 0) in a Cortex-M3 reset vector. */
 #define BOOT_APP_RESET_THUMB_MASK        0x1UL
+/** Number of 32-bit words in the NVIC interrupt-control register array (0–239). */
 #define BOOT_NVIC_REGISTER_WORDS         8U
+/** Number of DMA1 channels present on the GD32F103 series. */
 #define BOOT_DMA1_CHANNEL_COUNT          5U
 
+/** Function pointer to the application's reset handler (Thumb-mode entry). */
 typedef void (*boot_app_entry_t)(void);
 
+/** EEPROM configuration for the bootloader's persistent OTA state block. */
 static const eeprom_cfg_t s_boot_eeprom_cfg =
 {
     BOOT_EEPROM_DEVICE_NAME,
@@ -37,18 +48,48 @@ static const eeprom_cfg_t s_boot_eeprom_cfg =
     0U,
 };
 
+/** Monotonically-incrementing millisecond counter updated by the SysTick ISR. */
 static volatile uint32_t s_boot_ms;
 
+/**
+ * @brief Read a 32-bit word from an absolute memory address.
+ *
+ * Used to peek at the application's vector table without dereferencing a
+ * C pointer, which the compiler might optimize away for flash-mapped regions.
+ *
+ * @param addr Absolute byte address to read.
+ * @return The 32-bit value stored at that address.
+ */
 static uint32_t boot_read_word(uint32_t addr)
 {
     return *((volatile const uint32_t *)addr);
 }
 
+/**
+ * @brief Check whether an absolute address falls within a contiguous region.
+ *
+ * @param addr Address to test.
+ * @param base Region start address (inclusive).
+ * @param size Region size in bytes.
+ * @return 1 if @p addr is within [base, base + size); otherwise 0.
+ */
 static uint8_t boot_addr_in_range(uint32_t addr, uint32_t base, uint32_t size)
 {
     return ((addr >= base) && (addr < (base + size))) ? 1U : 0U;
 }
 
+/**
+ * @brief Validate the application image's vector table.
+ *
+ * Verifies two properties required by the Cortex-M3 architecture:
+ * -# The initial stack pointer must fall within the on-chip SRAM region and
+ *    satisfy 8-byte stack alignment (AAPCS requirement).
+ * -# The reset vector must have its Thumb-mode bit set (bit 0 = 1) and,
+ *    after masking that bit, the target address must lie inside the
+ *    application Flash partition.
+ *
+ * @return 1 when both vector entries are architecturally valid; otherwise 0.
+ */
 uint8_t boot_app_is_valid(void)
 {
     uint32_t app_sp = boot_read_word(CONFIG_APP_BASE_ADDR);
@@ -56,7 +97,7 @@ uint8_t boot_app_is_valid(void)
     uint32_t app_reset_addr = app_reset & ~BOOT_APP_RESET_THUMB_MASK;
     uint32_t sram_end = CONFIG_SRAM_BASE_ADDR + CONFIG_SRAM_SIZE;
 
-    /* APP 初始栈顶必须落在片内 SRAM 内，并保持 8 字节对齐。 */
+    /* The initial stack pointer must reside in on-chip SRAM and be 8-byte aligned. */
     if ((app_sp < CONFIG_SRAM_BASE_ADDR) ||
         (app_sp > sram_end) ||
         ((app_sp & BOOT_APP_STACK_ALIGN_MASK) != 0U))
@@ -65,8 +106,9 @@ uint8_t boot_app_is_valid(void)
     }
 
     /*
-     * Cortex-M3 复位向量最低位必须为 1，表示 Thumb 入口；
-     * 去掉 Thumb 位后的真实地址必须落在 APP Flash 分区。
+     * Cortex-M3 reset vectors must have bit 0 set to indicate a Thumb-mode
+     * entry point. After clearing that bit, the resolved address must fall
+     * within the application Flash region.
      */
     if (((app_reset & BOOT_APP_RESET_THUMB_MASK) == 0U) ||
         (boot_addr_in_range(app_reset_addr, CONFIG_APP_BASE_ADDR, CONFIG_APP_SIZE) == 0U))
@@ -77,42 +119,58 @@ uint8_t boot_app_is_valid(void)
     return 1U;
 }
 
-static void boot_disable_dma(uint32_t dma_periph, uint32_t channel_count)
-{
-    uint32_t channel;
-
-    for (channel = 0U; channel < channel_count; channel++)
-    {
-        dma_channel_disable(dma_periph, (dma_channel_enum)channel);
-    }
-}
-
+/**
+ * @brief Prepare the Cortex-M3 system state for a clean handover to the application.
+ *
+ * Disables interrupts globally, stops SysTick, resets and gates every
+ * Bootloader-owned peripheral, clears all NVIC interrupt-enable and pending
+ * registers, and resets the system-control block's PendSV and SysTick
+ * exception state. A DSB/ISB barrier pair ensures the changes are visible
+ * before the jump.
+ */
 static void boot_prepare_for_app_jump(void)
 {
     uint32_t i;
 
     __disable_irq();
 
-    /* 关闭 Boot 侧 SysTick，避免跳转后继续触发 Boot 的系统节拍。 */
+    /* Stop bootloader SysTick so the application does not inherit a running timer. */
     SysTick->CTRL = 0U;
     SysTick->LOAD = 0U;
     SysTick->VAL = 0U;
 
-    /* 关闭 Boot 已启用的 DMA1 通道，防止后台搬运继续写入 Boot 的缓冲区。 */
-    boot_disable_dma(DMA1, BOOT_DMA1_CHANNEL_COUNT);
+    /* Reset the UART3/I2C0/DMA1 resources initialized by board_init(). */
+    board_deinit_for_app_jump();
 
-    /* 关闭并清除全部外设中断挂起位，让 APP 从干净的 NVIC 状态启动。 */
+    /* delay_init() enables the DWT cycle counter. Restore its reset-state
+       behaviour so the App does not inherit Bootloader debug/trace state. */
+    DWT->CTRL &= ~DWT_CTRL_CYCCNTENA_Msk;
+    DWT->CYCCNT = 0U;
+    CoreDebug->DEMCR &= ~CoreDebug_DEMCR_TRCENA_Msk;
+
+    /* Clear all peripheral interrupt enable and pending bits so the
+       application starts from a known-clean NVIC state. */
     for (i = 0U; i < BOOT_NVIC_REGISTER_WORDS; i++)
     {
         NVIC->ICER[i] = 0xFFFFFFFFUL;
         NVIC->ICPR[i] = 0xFFFFFFFFUL;
     }
 
+    /* Clear PendSV and SysTick exception state in the system control block. */
     SCB->ICSR = SCB_ICSR_PENDSVCLR_Msk | SCB_ICSR_PENDSTCLR_Msk;
     __DSB();
     __ISB();
 }
 
+/**
+ * @brief Validate the application image and transfer control to it.
+ *
+ * Reads the application's initial stack pointer and reset vector from the
+ * vector table at CONFIG_APP_BASE_ADDR. After a full system-state cleanup,
+ * the NVIC vector table is relocated, the main stack pointer is set, and
+ * interrupts are re-enabled with __enable_irq() — matching the default
+ * reset behaviour — before branching to the application's entry point.
+ */
 void boot_jump_to_app(void)
 {
     uint32_t app_sp;
@@ -130,26 +188,33 @@ void boot_jump_to_app(void)
 
     boot_prepare_for_app_jump();
 
-    /* 切换到 APP 向量表后设置 MSP，再按复位默认语义放开全局中断屏蔽。 */
+    /* Switch to the application vector table, set MSP from the
+       application's initial stack pointer, then restore the default
+       post-reset interrupt-enable state before entry. */
     nvic_vector_table_set(NVIC_VECTTAB_FLASH, APP_VECT_TAB_OFFSET);
     __set_MSP(app_sp);
     __enable_irq();
 
     app_entry();
 
+    /* The application entry must never return; spin if it does. */
     while (1)
     {
     }
 }
 
 
-/*
- * 判断当前是否需要进入 OTA 模式。
- * 条件：EEPROM 中有有效的 OTA 请求标志，或 App 区镜像校验不通过。
+/**
+ * @brief Record a terminal application-validation failure in OTA metadata.
+ *
+ * When both EEPROM copies are invalid, default metadata is rebuilt first so
+ * there is always a valid structure to persist the failure against.
+ *
+ * @param ota_info        Destination OTA metadata structure.
+ * @param ota_info_valid  Non-zero when @p ota_info holds valid EEPROM data.
+ * @param fail_reason     Protocol-defined failure code to record.
  */
-static void boot_record_app_failure(ota_eeprom_info_t *ota_info,
-                                    uint8_t ota_info_valid,
-                                    uint32_t fail_reason)
+static void boot_record_app_failure(ota_eeprom_info_t *ota_info, uint8_t ota_info_valid, uint32_t fail_reason)
 {
     if (ota_info == NULL)
     {
@@ -169,8 +234,21 @@ static void boot_record_app_failure(ota_eeprom_info_t *ota_info,
     (void)ota_eeprom_save(ota_info);
 }
 
-static uint8_t boot_need_ota_mode(ota_eeprom_info_t *ota_info,
-                                  uint8_t ota_info_valid)
+/**
+ * @brief Determine whether the bootloader must enter OTA mode.
+ *
+ * OTA mode is required when:
+ * - The EEPROM contains an unresolved OTA request, a download in progress,
+ *   a pending verification, or a terminal failure; or
+ * - The application vector table is structurally invalid; or
+ * - The stored image size and CRC32 do not match a full readback of the
+ *   programmed application Flash.
+ *
+ * @param ota_info       OTA metadata loaded from EEPROM.
+ * @param ota_info_valid Non-zero when @p ota_info was successfully loaded.
+ * @return 1 if OTA mode is required; otherwise 0 (boot the application).
+ */
+static uint8_t boot_need_ota_mode(ota_eeprom_info_t *ota_info, uint8_t ota_info_valid)
 {
     if (ota_info_valid != 0U)
     {
@@ -213,6 +291,14 @@ static uint8_t boot_need_ota_mode(ota_eeprom_info_t *ota_info,
 }
 
 
+/**
+ * @brief Bootloader main entry point.
+ *
+ * Initializes the hardware, registers the EEPROM device, loads the
+ * persistent OTA state, and decides whether to enter the OTA service loop
+ * or jump directly to the application. If the OTA service loop exits,
+ * control falls through to the normal application boot path.
+ */
 void boot_main(void)
 {
     int ret;
@@ -224,29 +310,30 @@ void boot_main(void)
     ret = eeprom_register(&s_boot_eeprom_cfg);
     if (RET_IS_ERR(ret) && (ret != RET_ALREADY_EXISTS))
     {
+        /* EEPROM registration failed for a reason other than a duplicate;
+           halt here — further OTA persistence cannot work. */
         while (1)
         {
         }
     }
 
-    /* 从 EEPROM 加载 OTA 状态，判断是否需要进入升级模式 */
-     ret = ota_eeprom_load(&ota_info);
-     if (RET_IS_OK(ret))
-     {
-         ota_info_valid = 1U;
-     }
-//    memset(&ota_info, 0, sizeof(ota_eeprom_info_t));    //Test
-//    ota_info.ota_state = OTA_STATE_REQUEST;
-//    ota_info_valid = 1;
+    /* Load the persistent OTA state from EEPROM to decide whether an
+       upgrade cycle is in progress. */
+    ret = ota_eeprom_load(&ota_info);
+    if (RET_IS_OK(ret))
+    {
+        ota_info_valid = 1U;
+    }
 
     if (boot_need_ota_mode(&ota_info, ota_info_valid))
     {
-        ota_service_run(&ota_info, ota_info_valid);
+        ota_service_task(&ota_info, ota_info_valid);
     }
 
-    /* 正常启动：校验 App 并跳转 */
+    /* Normal boot path: validate and jump to the application. */
     boot_jump_to_app();
 
+    /* boot_jump_to_app must never return; spin if it does. */
     while (1)
     {
     }

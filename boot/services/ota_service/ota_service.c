@@ -646,16 +646,14 @@ static void ota_service_handle_data(const ota_frame_t *req, ota_eeprom_info_t *i
         }
         else if ((data_len == 0U) ||
                  ((uint32_t)data_len > s_ota_chunk_size) ||
-                 (req->payload_len !=
-                  (uint16_t)(OTA_DATA_REQ_HEADER_LEN + data_len)))
+                 (req->payload_len != (uint16_t)(OTA_DATA_REQ_HEADER_LEN + data_len)))
         {
             status = (uint32_t)OTA_ERR_PAYLOAD_LEN;
         }
         else if ((offset > info->image_size) ||
                  ((uint32_t)data_len > (info->image_size - offset)) ||
                  ((offset & 1U) != 0U) ||
-                 (((data_len & 1U) != 0U) &&
-                  ((offset + data_len) != info->image_size)))
+                 (((data_len & 1U) != 0U) && ((offset + data_len) != info->image_size)))
         {
             status = (uint32_t)OTA_ERR_PAYLOAD_LEN;
         }
@@ -682,7 +680,7 @@ static void ota_service_handle_data(const ota_frame_t *req, ota_eeprom_info_t *i
             status = (uint32_t)OTA_ERR_OFFSET_MISMATCH;
             ota_service_record_recoverable_error(info, status);
         }
-        else
+        else    //All is OK
         {
             flash_result = ota_flash_write_chunk(offset, &req->payload[OTA_DATA_REQ_HEADER_LEN], data_len);
             if (flash_result != OTA_FLASH_OK)
@@ -915,7 +913,7 @@ static void ota_service_handle_request(const ota_frame_t *req, ota_eeprom_info_t
  * @param initial_info_valid Non-zero when @p initial_info is valid; otherwise
  *                           runtime information is loaded from EEPROM.
  */
-void ota_service_run(const ota_eeprom_info_t *initial_info, uint8_t initial_info_valid)
+void ota_service_task(const ota_eeprom_info_t *initial_info, uint8_t initial_info_valid)
 {
     ota_eeprom_info_t info;
 

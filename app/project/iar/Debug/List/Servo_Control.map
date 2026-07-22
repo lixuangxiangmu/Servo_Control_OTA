@@ -1,104 +1,104 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.70.1.475/W64 for ARM                  21/Jul/2026  22:43:12
+# IAR ELF Linker V9.70.1.475/W64 for ARM                  22/Jul/2026  15:14:15
 # Copyright 2007-2025 IAR Systems AB.
 #
 #    Output file  =
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Exe\Servo_Control.out_nochecksum
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Exe\Servo_Control.out_nochecksum
 #    Map file     =
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\List\Servo_Control.map
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\List\Servo_Control.map
 #    Command line =
 #        -f
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Exe\Servo_Control.out_nochecksum.rsp
-#        (E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_config.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_control.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_display.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_hmi.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_hw.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_main.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_state.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_storage.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\BSP_15524770269462287228.dir\board.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\croutine.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\dev_adc.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\dev_gpio.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\dev_i2c.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\dev_pwm.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\dev_timer.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\dev_uart.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\device.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\digital_tube_2074676353746859852.dir\digital_tube.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\digital_tube_service_12065541536213142526.dir\digital_tube_service.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir\drv_adc.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir\drv_gpio.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir\drv_i2c.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir\drv_pwm.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir\drv_timer.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir\drv_uart.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\storage_3435696131549692926.dir\eeprom.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\encoder_service_11621328168900944744.dir\encoder_service.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\event_groups.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\fault_service_8632579021094681659.dir\fault_service.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_adc.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_bkp.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_can.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_crc.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_dac.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_dbg.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_dma.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_enet.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_exmc.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_exti.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_fwdgt.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_gpio.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_i2c.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_1730774324548931077.dir\gd32f10x_it.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_misc.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_pmu.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_rcu.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_rtc.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_sdio.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_spi.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_timer.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_usart.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_wwdgt.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\heap_4.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\key_service_15439591275177894613.dir\key_service.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\led_service_4018479847909056226.dir\led_service.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\list.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\main.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\ota_service_7119661423722114140.dir\ota_image.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\ota_service_7119661423722114140.dir\ota_protocol.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\ota_service_7119661423722114140.dir\ota_service.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\port.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\portasm.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\queue.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\remote_service_13545358747635684842.dir\remote_service.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Services_6399416474134996800.dir\services.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\servo_service_992771348006326893.dir\servo_service.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Startup_17868067532763321386.dir\startup_gd32f10x_hd.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\stream_buffer.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_1730774324548931077.dir\system_gd32f10x.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\tasks.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\timers.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\utils_8906540227699916639.dir\utils_lib.o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\watchdog_service_15197748488102654179.dir\watchdog_service.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Exe\Servo_Control.out_nochecksum.rsp
+#        (E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_config.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_control.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_display.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_hmi.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_hw.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_main.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_state.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\app_storage.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\BSP_15524770269462287228.dir\board.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\croutine.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\dev_adc.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\dev_gpio.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\dev_i2c.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\dev_pwm.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\dev_timer.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\dev_uart.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_13867102261166347011.dir\device.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\digital_tube_2074676353746859852.dir\digital_tube.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\digital_tube_service_12065541536213142526.dir\digital_tube_service.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir\drv_adc.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir\drv_gpio.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir\drv_i2c.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir\drv_pwm.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir\drv_timer.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir\drv_uart.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\storage_3435696131549692926.dir\eeprom.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\encoder_service_11621328168900944744.dir\encoder_service.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\event_groups.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\fault_service_8632579021094681659.dir\fault_service.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_adc.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_bkp.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_can.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_crc.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_dac.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_dbg.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_dma.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_enet.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_exmc.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_exti.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_fwdgt.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_gpio.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_i2c.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_1730774324548931077.dir\gd32f10x_it.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_misc.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_pmu.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_rcu.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_rtc.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_sdio.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_spi.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_timer.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_usart.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir\gd32f10x_wwdgt.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\heap_4.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\key_service_15439591275177894613.dir\key_service.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\led_service_4018479847909056226.dir\led_service.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\list.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Application_4454359601498626787.dir\main.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\ota_service_7119661423722114140.dir\ota_image.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\ota_service_7119661423722114140.dir\ota_protocol.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\ota_service_7119661423722114140.dir\ota_service.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\port.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\portasm.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\queue.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\remote_service_13545358747635684842.dir\remote_service.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Services_6399416474134996800.dir\services.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\servo_service_992771348006326893.dir\servo_service.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Startup_17868067532763321386.dir\startup_gd32f10x_hd.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\stream_buffer.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_1730774324548931077.dir\system_gd32f10x.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\tasks.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir\timers.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\utils_8906540227699916639.dir\utils_lib.o
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\watchdog_service_15197748488102654179.dir\watchdog_service.o
 #        --no_out_extension -o
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Exe\Servo_Control.out_nochecksum
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Exe\Servo_Control.out_nochecksum
 #        --keep .boot
-#        --image_input=E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\..\..\..\boot\project\iar\Debug\Exe\Servo_Control_boot.bin,.boot,.boot,4
+#        --image_input=E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\..\..\..\boot\project\iar\Debug\Exe\Servo_Control_boot.bin,.boot,.boot,4
 #        --map
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\List\Servo_Control.map
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\List\Servo_Control.map
 #        --config
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\..\iar\linker\GD32F103xC.icf
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\..\iar\linker\GD32F103xC.icf
 #        --keep __checksum --semihosting --entry __iar_program_start
 #        --place_holder __checksum,2,.checksum,1 --define_symbol
 #        __checksum_begin=0x8008000 --define_symbol __checksum_end=0x8027ffd
 #        --vfe --text_out locale --cpu=Cortex-M3 --fpu=None)
 #        --diagnostics_format=sarif_stdout --dependencies=n
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Exe\Servo_Control.out_nochecksum.iar_deps
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Exe\Servo_Control.out_nochecksum.iar_deps
 #        --dynamic_output
-#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Exe\Servo_Control.out_nochecksum.iar_dynout
+#        E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Exe\Servo_Control.out_nochecksum.iar_dynout
 #
 ###############################################################################
 
@@ -582,12 +582,12 @@ command line/config:
     --------------------------------------------------
     Total:                                  2
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\..\..\..\boot\project\iar\Debug\Exe: [1]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\..\..\..\boot\project\iar\Debug\Exe: [1]
     Servo_Control_boot.bin             21'580
     --------------------------------------------------
     Total:                             21'580
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Application_4454359601498626787.dir: [2]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Application_4454359601498626787.dir: [2]
     app_config.o                 140      556
     app_control.o              1'852       32       22
     app_display.o              1'204       12       17
@@ -600,12 +600,12 @@ E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\a
     --------------------------------------------------
     Total:                     6'268    1'140       85
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\BSP_15524770269462287228.dir: [3]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\BSP_15524770269462287228.dir: [3]
     board.o                      472    1'200
     --------------------------------------------------
     Total:                       472    1'200
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_13867102261166347011.dir: [4]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_13867102261166347011.dir: [4]
     dev_adc.o                    108
     dev_gpio.o                   310
     dev_i2c.o                    522
@@ -616,13 +616,13 @@ E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\a
     --------------------------------------------------
     Total:                     2'868               320
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_1730774324548931077.dir: [5]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_1730774324548931077.dir: [5]
     gd32f10x_it.o                 12
     system_gd32f10x.o            340        4        4
     --------------------------------------------------
     Total:                       352        4        4
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir: [6]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir: [6]
     drv_adc.o                    992       24      602
     drv_gpio.o                 1'704       24    1'537
     drv_i2c.o                  2'512       24      121
@@ -632,7 +632,7 @@ E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\a
     --------------------------------------------------
     Total:                     9'078      144    7'527
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir: [7]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir: [7]
     heap_4.o                     536        4   24'604
     list.o                       138
     port.o                       248        4        4
@@ -644,7 +644,7 @@ E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\a
     --------------------------------------------------
     Total:                    10'076       28   28'868
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir: [8]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir: [8]
     gd32f10x_adc.o             1'044
     gd32f10x_dma.o             1'056
     gd32f10x_exti.o              192
@@ -657,74 +657,74 @@ E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\a
     --------------------------------------------------
     Total:                     6'660       32
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Services_6399416474134996800.dir: [9]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Services_6399416474134996800.dir: [9]
     services.o                    34
     --------------------------------------------------
     Total:                        34
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Startup_17868067532763321386.dir: [10]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Startup_17868067532763321386.dir: [10]
     startup_gd32f10x_hd.o        512
     --------------------------------------------------
     Total:                       512
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\digital_tube_2074676353746859852.dir: [11]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\digital_tube_2074676353746859852.dir: [11]
     digital_tube.o               672       12       59
     --------------------------------------------------
     Total:                       672       12       59
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\digital_tube_service_12065541536213142526.dir: [12]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\digital_tube_service_12065541536213142526.dir: [12]
     digital_tube_service.o       304        8        5
     --------------------------------------------------
     Total:                       304        8        5
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\encoder_service_11621328168900944744.dir: [13]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\encoder_service_11621328168900944744.dir: [13]
     encoder_service.o            884                21
     --------------------------------------------------
     Total:                       884                21
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\fault_service_8632579021094681659.dir: [14]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\fault_service_8632579021094681659.dir: [14]
     fault_service.o               44                10
     --------------------------------------------------
     Total:                        44                10
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\key_service_15439591275177894613.dir: [15]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\key_service_15439591275177894613.dir: [15]
     key_service.o                868        8       49
     --------------------------------------------------
     Total:                       868        8       49
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\led_service_4018479847909056226.dir: [16]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\led_service_4018479847909056226.dir: [16]
     led_service.o                852       12       17
     --------------------------------------------------
     Total:                       852       12       17
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\ota_service_7119661423722114140.dir: [17]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\ota_service_7119661423722114140.dir: [17]
     ota_image.o                  468        8
     ota_protocol.o               498
     ota_service.o                824       16      570
     --------------------------------------------------
     Total:                     1'790       24      570
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\remote_service_13545358747635684842.dir: [18]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\remote_service_13545358747635684842.dir: [18]
     remote_service.o             972                72
     --------------------------------------------------
     Total:                       972                72
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\servo_service_992771348006326893.dir: [19]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\servo_service_992771348006326893.dir: [19]
     servo_service.o              644                 6
     --------------------------------------------------
     Total:                       644                 6
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\storage_3435696131549692926.dir: [20]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\storage_3435696131549692926.dir: [20]
     eeprom.o                   1'208                97
     --------------------------------------------------
     Total:                     1'208                97
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\utils_8906540227699916639.dir: [21]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\utils_8906540227699916639.dir: [21]
     utils_lib.o                  188    1'536
     --------------------------------------------------
     Total:                       188    1'536
 
-E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\watchdog_service_15197748488102654179.dir: [22]
+E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\watchdog_service_15197748488102654179.dir: [22]
     watchdog_service.o            36                12
     --------------------------------------------------
     Total:                        36                12
@@ -1414,13 +1414,13 @@ ota_service_build_info_payload
 ota_service_build_info_payload::device_sn
                          0x801'5ae0    0x10  Data  Lc  ota_service.o [17]
 ota_service_handle_enter
-                         0x801'2d1f    0x72  Code  Lc  ota_service.o [17]
+                         0x801'2d21    0x72  Code  Lc  ota_service.o [17]
 ota_service_is_protocol_frame
-                         0x801'2d91    0x24  Code  Gb  ota_service.o [17]
+                         0x801'2d93    0x24  Code  Gb  ota_service.o [17]
 ota_service_prepare_enter
-                         0x801'2c41    0xde  Code  Lc  ota_service.o [17]
+                         0x801'2c41    0xe0  Code  Lc  ota_service.o [17]
 ota_service_process_frame
-                         0x801'2db5    0x72  Code  Gb  ota_service.o [17]
+                         0x801'2db7    0x72  Code  Gb  ota_service.o [17]
 ota_service_send_response
                          0x801'2b29    0x66  Code  Lc  ota_service.o [17]
 ota_service_send_status
@@ -1820,28 +1820,28 @@ xTimerTaskHandle        0x2000'932c     0x4  Data  Lc  timers.o [7]
 xYieldPendings          0x2000'9308     0x4  Data  Lc  tasks.o [7]
 
 
-[1] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\..\..\..\boot\project\iar\Debug\Exe
-[2] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Application_4454359601498626787.dir
-[3] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\BSP_15524770269462287228.dir
-[4] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_13867102261166347011.dir
-[5] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Device_1730774324548931077.dir
-[6] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir
-[7] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir
-[8] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir
-[9] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Services_6399416474134996800.dir
-[10] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\Startup_17868067532763321386.dir
-[11] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\digital_tube_2074676353746859852.dir
-[12] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\digital_tube_service_12065541536213142526.dir
-[13] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\encoder_service_11621328168900944744.dir
-[14] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\fault_service_8632579021094681659.dir
-[15] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\key_service_15439591275177894613.dir
-[16] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\led_service_4018479847909056226.dir
-[17] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\ota_service_7119661423722114140.dir
-[18] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\remote_service_13545358747635684842.dir
-[19] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\servo_service_992771348006326893.dir
-[20] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\storage_3435696131549692926.dir
-[21] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\utils_8906540227699916639.dir
-[22] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0_OTA\app\project\iar\Debug\Obj\watchdog_service_15197748488102654179.dir
+[1] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\..\..\..\boot\project\iar\Debug\Exe
+[2] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Application_4454359601498626787.dir
+[3] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\BSP_15524770269462287228.dir
+[4] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_13867102261166347011.dir
+[5] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Device_1730774324548931077.dir
+[6] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Drivers_14040216300654056098.dir
+[7] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\FreeRTOS_4536360363620454665.dir
+[8] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\GD32F10x_driver_802374253036192153.dir
+[9] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Services_6399416474134996800.dir
+[10] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\Startup_17868067532763321386.dir
+[11] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\digital_tube_2074676353746859852.dir
+[12] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\digital_tube_service_12065541536213142526.dir
+[13] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\encoder_service_11621328168900944744.dir
+[14] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\fault_service_8632579021094681659.dir
+[15] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\key_service_15439591275177894613.dir
+[16] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\led_service_4018479847909056226.dir
+[17] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\ota_service_7119661423722114140.dir
+[18] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\remote_service_13545358747635684842.dir
+[19] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\servo_service_992771348006326893.dir
+[20] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\storage_3435696131549692926.dir
+[21] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\utils_8906540227699916639.dir
+[22] = E:\Code_Workspace\01_GD32_Project\05_GD32F103RCT6\01_Servo_Control_JW_V2.0\app\project\iar\Debug\Obj\watchdog_service_15197748488102654179.dir
 [23] = dl7M_tln.a
 [24] = m7M_tl.a
 [25] = rt7M_tl.a

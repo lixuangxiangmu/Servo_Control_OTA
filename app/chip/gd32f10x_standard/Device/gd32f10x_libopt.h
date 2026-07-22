@@ -35,7 +35,7 @@ OF SUCH DAMAGE.
 #ifndef GD32F10X_LIBOPT_H
 #define GD32F10X_LIBOPT_H
 
-//#include "gd32f10x_fmc.h"
+#include "gd32f10x_fmc.h"
 #include "gd32f10x_pmu.h"
 #include "gd32f10x_bkp.h"
 #include "gd32f10x_rcu.h"

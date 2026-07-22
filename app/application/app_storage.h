@@ -78,7 +78,7 @@
 /** Fold angle maximum value (degrees) */
 #define APP_PARAM_ANGLE_FOLD_MAX            179U
 /** Fold angle factory default (degrees), follows legacy product behavior */
-#define APP_PARAM_ANGLE_FOLD_DEFAULT        124U
+#define APP_PARAM_ANGLE_FOLD_DEFAULT        125U
 
 /*===========================================================================
  * 参数值域定义 —— 堵转后的初始角度和折叠角度

@@ -356,7 +356,6 @@
                     <name>CCIncludePath2</name>
                     <state>$PROJ_DIR$\..\..\chip\gd32f10x_standard\CMSIS</state>
                     <state>$PROJ_DIR$\..\..\chip\gd32f10x_standard\Device</state>
-                    <state>$PROJ_DIR$\..\..\chip\gd32f10x_standard\GD32F10x_StdPeriph_Driver\Include</state>
                     <state>$PROJ_DIR$\..\..\application</state>
                     <state>$PROJ_DIR$\..\..\bsp</state>
                     <state>$PROJ_DIR$\..\..\config</state>
@@ -368,6 +367,7 @@
                     <state>$PROJ_DIR$\..\..\components\storage\eeprom</state>
                     <state>$PROJ_DIR$\..\..\application\app_misc</state>
                     <state>$PROJ_DIR$\..\..\middleware\delay</state>
+                    <state>$PROJ_DIR$\..\..\chip\gd32f10x_standard\GD32F10x_StdPeriph_Driver\Include</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -2292,6 +2292,9 @@
     </group>
     <group>
         <name>Config</name>
+        <file>
+            <name>$PROJ_DIR$\..\..\config\project_config.h</name>
+        </file>
     </group>
     <group>
         <name>Device</name>
@@ -2376,6 +2379,9 @@
         <group>
             <name>ota_servoces</name>
             <file>
+                <name>$PROJ_DIR$\..\..\services\ota_service\ota_flash.c</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\..\services\ota_service\ota_image.c</name>
             </file>
             <file>
@@ -2383,9 +2389,6 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\..\services\ota_service\ota_service.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\..\services\ota_service\ota_flash.c</name>
             </file>
         </group>
     </group>

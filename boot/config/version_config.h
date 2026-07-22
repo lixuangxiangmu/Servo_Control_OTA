@@ -7,6 +7,6 @@
 #define CONFIG_BOOT_VERSION_PATCH       0
 
 /* Firmware version string (for display / AT commands). */
-#define CONFIG_VERSION_STRING           "2.0.0"
+#define CONFIG_VERSION_STRING           "1.0.0"
 
 #endif /* VERSION_CONFIG_H */

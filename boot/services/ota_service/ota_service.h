@@ -35,6 +35,6 @@
  *                           that should be used; zero to ignore and load
  *                           from EEPROM.
  */
-void ota_service_run(const ota_eeprom_info_t *initial_info, uint8_t initial_info_valid);
+void ota_service_task(const ota_eeprom_info_t *initial_info, uint8_t initial_info_valid);
 
 #endif /* OTA_SERVICE_H */
