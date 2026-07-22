@@ -362,7 +362,7 @@ static int ota_service_handle_enter(const ota_frame_t *req)
     /* Transmit the response before resetting */
     ret = ota_service_send_response(req, s_ota_payload_buf, APP_OTA_ENTER_RSP_LEN);
 
-    if ((status == (uint32_t)OTA_OK) && RET_IS_OK(ret))
+    if ((status == (uint32_t)OTA_OK) && (ret != 0))
     {
         /* The response has been accepted and successfully transmitted.
          * Wait for the Bluetooth stack to flush the TX buffer, then reset
@@ -427,6 +427,10 @@ int ota_service_process_frame(const uint8_t *buf, uint32_t len)
     {
         return RET_INVALID_PARAM;
     }
+
+//    ota_eeprom_info_t info;
+//    memset(&info, 0, sizeof(ota_eeprom_info_t));
+//    ota_eeprom_save(&info);
 
     switch (req.cmd)
     {
